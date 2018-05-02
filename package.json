@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "Amy <ymresume@163.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "main": "dist/vue-calendar-amies.js",
   "repository": {
       "type": "git",
