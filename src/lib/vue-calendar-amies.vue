@@ -272,28 +272,28 @@ html{
 }
 .amies-year, .amies-month{
     display: inline-block;
-    line-height: 5rem;
-    font-size: 2.3rem;
+    line-height: 8.33rem;
+    font-size: 3.83rem;
     color: #333;
 }
 .amies-top .amies-icon{
     color: #6699cc;
     display: inline-block;
-    margin: 0 3rem;
+    margin: 0 5rem;
 }
 .amies-date{
     width: 100%;
-    font-size: 2rem;
+    font-size: 3.33rem;
     color: #333;
 }
 .amies-date th{
     color: #6699cc;
     font-weight: 400;
-    height: 5.5rem;
+    height: 9.16rem;
     border-bottom: 2px solid #6699cc;
 }
 .amies-date td{
-    height: 5rem;
+    height: 8.33rem;
 }
 .amies-date td.chosed{
     background: #6699cc;
@@ -309,15 +309,15 @@ html{
 }
 .amies-btns span{
     display: inline-block;
-    width: 15rem;
-    height: 4rem;
-    line-height: 4rem;
+    width: 25rem;
+    height: 6.66rem;
+    line-height: 6.66rem;
     background: #6699cc;
     color: #fff;
     vertical-align: middle;
-    font-size: 2.1rem;
+    font-size: 3.5rem;
     color: #fff;
     border-radius: 40px;
-    margin: 0.5rem 0;
+    margin: 0.83rem 0;
 }
 </style>
