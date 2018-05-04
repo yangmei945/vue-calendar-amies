@@ -1,41 +1,41 @@
 <template>
-  <div>
-      <div v-if="show" class="amies-wrap">
-          <div class="amies-mask"></div>
-          <div class="amies-content">
-              <div class="amies-top">
-                  <div class="amies-year">
-                      <span class="amies-icon" @click="decYear">◀</span>
-                      <span>{{year}}</span>
-                      <span class="amies-icon" @click="addYear">▶</span>
-                  </div>
-                  <div class="amies-month">
-                      <span class="amies-icon" @click="decMonth">◀</span>
-                      <span>{{months[month]}}</span>
-                      <span class="amies-icon" @click="addMonth">▶</span>
-                  </div>
-              </div>
-              <table class="amies-date" cellpadding="0" cellspacing="0">
-                  <tr>
-                      <th>日</th>
-                      <th>一</th>
-                      <th>二</th>
-                      <th>三</th>
-                      <th>四</th>
-                      <th>五</th>
-                      <th>六</th>
-                  </tr>
-                  <tr v-for="(item, index) in [1, 2, 3, 4, 5, 6]" :key="index">
-                      <td v-if="parseInt(idx/7)==index" v-for="(itm, idx) in currentMonth" :key="idx" :class="{'disable':idx<minDayIndex||idx>maxDayIndex||(year==endD.getFullYear()&&month==endD.getMonth()&&itm>endD.getDate())||(year==startD.getFullYear()&&month==startD.getMonth()&&itm<startD.getDate()),'chosed':idx>=minDayIndex&&idx<=maxDayIndex&&itm==day}" @click="chooseDate(itm, idx)">{{itm}}</td>
-                  </tr>
-              </table>
-              <div class="amies-btns">
-                  <span @click="close">取消</span>
-                  <span @click="confirm">确定</span>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div>
+        <div v-if="show" class="amies-wrap">
+            <div class="amies-mask"></div>
+            <div class="amies-content">
+                <div class="amies-top">
+                    <div class="amies-year">
+                        <span class="amies-icon" @click="decYear">◀</span>
+                        <span>{{year}}</span>
+                        <span class="amies-icon" @click="addYear">▶</span>
+                    </div>
+                    <div class="amies-month">
+                        <span class="amies-icon" @click="decMonth">◀</span>
+                        <span>{{months[month]}}</span>
+                        <span class="amies-icon" @click="addMonth">▶</span>
+                    </div>
+                </div>
+                <table class="amies-date" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th>日</th>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th>六</th>
+                    </tr>
+                    <tr v-for="(item, index) in [1, 2, 3, 4, 5, 6]" :key="index">
+                        <td v-if="parseInt(idx/7)==index" v-for="(itm, idx) in currentMonth" :key="idx" :class="{'disable':idx<minDayIndex||idx>maxDayIndex||(year==endD.getFullYear()&&month==endD.getMonth()&&itm>endD.getDate())||(year==startD.getFullYear()&&month==startD.getMonth()&&itm<startD.getDate()),'chosed':idx>=minDayIndex&&idx<=maxDayIndex&&itm==day}" @click="chooseDate(itm, idx)">{{itm}}</td>
+                    </tr>
+                </table>
+                <div class="amies-btns">
+                    <span @click="close">取消</span>
+                    <span @click="confirm">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -109,10 +109,9 @@ export default {
                 this.currentMonth.push(i);
             }
             this.maxDayIndex = this.currentMonth.length-1;
-            var tempWeek = new Date(this.year+"-"+(this.month+1)+"-"+tempDay).getDay();
-            if(tempWeek<6){
+            if(this.currentMonth.length<42){
                 tempDay = 1;
-                for(var i=tempWeek;i<6;i++){
+                for(var i=this.currentMonth.length;i<=42;i++){
                     this.currentMonth.push(tempDay++);
                 }
             }
@@ -240,84 +239,82 @@ export default {
 }
 </script>
 
-<style lang="css">
-html{
-    height: 0;
-}
+<style>
 .amies-wrap{
+    width: 100vw;
+    height: 100vh;
     position: fixed;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
 }
 .amies-mask{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .4);
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
 }
 .amies-content{
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    width: 270px;
+    height: 290px;
     background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .amies-top{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    height: 40px;
+    line-height: 40px;
+    color: #69c;
+    font-size: 9px;
 }
 .amies-year, .amies-month{
     display: inline-block;
-    line-height: 8.33rem;
-    font-size: 3.83rem;
-    color: #333;
+    vertical-align: middle;
+    width: 132px;
+    text-align: center;
 }
-.amies-top .amies-icon{
-    color: #6699cc;
+.amies-year span:nth-child(2), .amies-month  span:nth-child(2){
     display: inline-block;
-    margin: 0 5rem;
+    vertical-align: middle;
+    width: 60px;
+    font-size: 14px;
 }
 .amies-date{
-    width: 100%;
-    font-size: 3.33rem;
-    color: #333;
+    margin: 0 auto;
+}
+.amies-date th, .amies-date td{
+    width: 35px;
+    height: 30px;
 }
 .amies-date th{
-    color: #6699cc;
-    font-weight: 400;
-    height: 9.16rem;
-    border-bottom: 2px solid #6699cc;
+    font-size: 14px;
+    color: #69c;
+    box-sizing: border-box;
+    border-bottom: 2px solid #69c;
 }
 .amies-date td{
-    height: 8.33rem;
-}
-.amies-date td.chosed{
-    background: #6699cc;
-    color: #fff;
+    font-size: 12px;
+    color: #333;
 }
 .amies-date td.disable{
-    color: #ccc;
+    color: #888;
+}
+.amies-date td.chosed{
+    color: #fff;
+    background: #69c;
 }
 .amies-btns{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #69c;
+    text-align: right;
 }
 .amies-btns span{
     display: inline-block;
-    width: 25rem;
-    height: 6.66rem;
-    line-height: 6.66rem;
-    background: #6699cc;
-    color: #fff;
-    vertical-align: middle;
-    font-size: 3.5rem;
-    color: #fff;
-    border-radius: 40px;
-    margin: 0.83rem 0;
+    margin-right: 30px;
 }
 </style>
