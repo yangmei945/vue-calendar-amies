@@ -48,7 +48,7 @@ export default {
         },
         startDate: {
             type: String,
-            default: "2017-6-10"
+            default: "1900-1-1"
         },
         defaultDate: {
             type: String,
@@ -288,6 +288,7 @@ export default {
 .amies-date th, .amies-date td{
     width: 35px;
     height: 30px;
+    text-align: center;
 }
 .amies-date th{
     font-size: 14px;
