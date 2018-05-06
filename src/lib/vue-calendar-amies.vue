@@ -278,7 +278,6 @@ export default {
 }
 .amies-year span:nth-child(2), .amies-month  span:nth-child(2){
     display: inline-block;
-    vertical-align: middle;
     width: 60px;
     font-size: 14px;
 }
