@@ -216,7 +216,7 @@ export default {
             this.$emit("closeCalendar");
         },
         confirm(){
-            var date = this.year+"-"+(this.month>8?(this.month+1):'0'+(this.month+1))+"-"+this.day;
+            var date = this.year+"-"+(this.month>8?(this.month+1):'0'+(this.month+1))+"-"+(this.day>9?this.day:'0'+this.day);
             this.$emit("confirmCalendar", date);
             this.close();
         }
