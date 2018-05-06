@@ -78,10 +78,10 @@ export default {
         }
     },
     mounted(){
-        this.init(new Date());
         this.startD = new Date(this.startDate);
         this.defaultD = new Date(this.defaultDate);
         this.endD = new Date(this.endDate);
+        this.init(this.defaultD);
     },
     methods:{
         init(date){
